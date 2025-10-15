@@ -51,7 +51,7 @@ genai.configure(api_key=api_key)
 # --- 1. Configurações do Streamlit Page ---
 
 st.set_page_config(
-    page_title="LISPA: Detecção Inteligente de Cultivos",
+    page_title="Agrishild: Detecção Inteligente de Cultivos",
     page_icon="🌿",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -81,7 +81,7 @@ def agent_boot():
         Você pode usar a seguinte ferramenta:
         - **google_search**: Para pesquisar tratamentos, especialmente para tratamento de pragas e doenças de tomate.
         Você deve sempre ser o mais claro e objectivo possível, não coloque respostas muito longa porque podem cansar os olhos dos usuários.
-        Sempre que necessário podes recomendar algumas marcas de produto para o usuário utiizar.
+        Sempre que necessário podes recomendar algumas marcas de produto para o usuário utilizar.
         Você nunca deve sair do personagem, sempre liste **no máximo três tratamentos**, levando em consideração opções populares e alternativas.
         """,
         tools=[google_search],
@@ -185,11 +185,11 @@ async def run_agent_and_get_response(current_user_id, current_session_id, new_co
 
 with st.sidebar:
     st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Lettuce_leaf.svg/1200px-Lettuce_leaf.svg.png", width=100)
-    st.title("🌱 LISPA - Sistema Inteligente")
+    st.title("🌱 Agrishild - Sistema Inteligente")
     st.markdown("---")
     
     st.markdown("### 🔍 Detecção em Cultivos")
-    st.markdown("Aplicação para detecção de **doenças e pragas** (foco em alface) usando Visão Computacional e o Agente LISPA para recomendações.")
+    st.markdown("Aplicação para detecção de **doenças e pragas** (foco em tomate) usando Inteligência Artificial.")
     
     st.markdown("---")
     st.subheader("Detectamos:")
@@ -203,14 +203,14 @@ with st.sidebar:
     st.subheader("💡 Instruções de Uso")
     st.markdown("1. **Faça o Upload**: Envie uma imagem clara do seu cultivo.")
     st.markdown("2. **Detectar**: Clique no botão para analisar.")
-    st.markdown("3. **Receba o Tratamento**: O **Agente LISPA** fornecerá recomendações.")
+    st.markdown("3. **Receba o Tratamento**: O **Agente** fornecerá recomendações.")
     
     st.markdown("---")
     st.info("Desenvolvido por AgriShilde - Inovação para o Agronegócio.")
 
 # --- 8. Layout do Conteúdo Principal e Lógica de Execução ---
 
-st.markdown("<h1 style='text-align: center; color: green;'>🌿 LISPA: Análise Inteligente de Cultivos</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: green;'>🌿 Agrishild: Análise Inteligente de Cultivos</h1>", unsafe_allow_html=True)
 st.markdown("<h3 style='text-align: center; color: #5cb85c;'>Visão Computacional Dupla e Recomendações Agronômicas</h3>", unsafe_allow_html=True)
 st.markdown("---")
 
@@ -241,7 +241,7 @@ if uploaded_file is not None:
 
     # Processamento e Resultados
     if detect_button:
-        with st.spinner("⏳ Analisando a imagem com modelos YOLO e preparando a recomendação do Agente LISPA..."):
+        with st.spinner("⏳ Analisando a imagem..."):
             try:
                 # --- Lógica de Detecção com Múltiplos Modelos ---
                 
@@ -314,15 +314,15 @@ if uploaded_file is not None:
                         
                         # --- Exibição da Resposta do Agente ---
                         st.markdown("---")
-                        st.subheader("🤖 Recomendações do Agente LISPA:")
+                        st.subheader("🤖 Recomendações do Agente:")
 
                         with st.expander("Clique para ver as recomendações de tratamento:", expanded=True):
-                            st.chat_message("LISPA", avatar="🧑‍🌾").markdown(response)
+                            st.chat_message("Agente", avatar="🧑‍🌾").markdown(response)
                             
                 else:
                     with col_status:
                         st.warning("⚠️ Nenhuma doença ou praga detectada nesta imagem pelos modelos.")
-                        st.info("O Agente LISPA não fará recomendações neste momento, pois a imagem parece saudável ou sem detecções claras.")
+                        st.info("O Agente não fará recomendações neste momento, pois a imagem parece saudável ou sem detecções claras.")
 
             except Exception as e:
                 # Melhoria na exibição de erro
@@ -332,4 +332,4 @@ if uploaded_file is not None:
             st.info("Aguardando o clique em **'Analisar Imagem'** para iniciar a detecção.")
 
 st.markdown("---")
-st.caption("Visão Computacional (YOLO) e Inteligência Artificial (LISPA/Gemini) em ação.")
+st.caption("Agrishild em ação.")
